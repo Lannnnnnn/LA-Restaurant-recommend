@@ -1,3 +1,16 @@
+# Project specific ignores
+data/raw/*
+data/out/*
+data/report*
+data/eda/*
+src/*.pyc
+src/*.sh
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
