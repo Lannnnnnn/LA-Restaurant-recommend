@@ -1,0 +1,5 @@
+{
+    "outdir": "data/tmp",
+    "eda_in_path": "notebooks/eda_report.ipynb",
+    "eda_out_path": "data/eda/eda_report.html"
+}
