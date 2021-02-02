@@ -17,6 +17,7 @@ def user_distribution(review):
     """
     user_review_count_df = review.user_id.value_counts().sort_values(ascending=False)
     
+    # generate the user distribution plot
     x = user_review_count_df.iloc[0:20] 
     plt.figure(figsize=(16,4))
     ax = sns.barplot(x.index, x.values, alpha=0.8)
@@ -32,12 +33,13 @@ def user_distribution(review):
     for rect, label in zip(rects, labels):
         height = rect.get_height()
         ax.text(rect.get_x() + rect.get_width()/2, height + 5, label, ha='center', va='bottom')
-
+    
+    print('save the user distribution image now')
     plt.savefig("./reference/img/most_20_user.png")
-    user_review_count_df.to_csv("./reference/dataframe/user_review_count.csv")
+    
     user_list = [user_review_count_df.index[0], user_review_count_df.index[1],
                  a[(a.values > 100) & (a.values < 1000)].index[0], a[(a.values <= 100)].index[0]]
-    return user_list
+    return pd.DataFrame({'user_id':user_review_count_df.index, 'count':user_review_count_df.values}), user_list
 
 def generate_user_review_txt(user_id, reviews):
     '''
@@ -53,6 +55,8 @@ def generate_user_review_txt(user_id, reviews):
     if not len(user_df):
         print('The user does not have any previous review record')
         return 
+    
+    print('generate the txt file for User' + user_id) 
     
     # store the user reviews txt file under the src/user_reviews folder
     file_path = 'reference/user_reviews/' + user_id + '.txt'
@@ -82,11 +86,4 @@ def run_autophrase(txt_name, path = '/reference/user_reviews/'):
     os.remove(dir + ori_dir + "/tmp_autophrase.sh")
     os.chdir(dir)
     print('Autophrase for' + txt_name + 'is Done!')
-    return
-
-def user_review_autophrase(user_list, review):
-    for i in user_list[0]:
-        fname, fpath = generate_user_review_txt(i, review)
-        run_autophrase(fname)
-    
     return
