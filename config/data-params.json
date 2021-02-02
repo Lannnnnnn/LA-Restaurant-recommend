@@ -1,0 +1,4 @@
+{
+    "review": "data/reviews.csv",
+    "business_csv": "data/business.csv"
+}
