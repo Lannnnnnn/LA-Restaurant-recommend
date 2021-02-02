@@ -1,10 +1,6 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns 
 from util import *
 
 def run_eda(review):
-    user_distribution(review)
-    
+    picked_user = user_distribution(review)
+    user_review_autophrase(user_list, review)
     return

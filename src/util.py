@@ -11,6 +11,9 @@ dir = os.getcwd()
 def user_distribution(review):
     """
     generate the user review distribution for 20 most review and the overall distribution of reviews
+    
+    return a list of user id includes the most and second most reviews user,
+             user id with 100<review<1000, user id with review < 100
     """
     user_review_count_df = review.user_id.value_counts().sort_values(ascending=False)
     
@@ -32,13 +35,16 @@ def user_distribution(review):
 
     plt.savefig("./reference/img/most_20_user.png")
     user_review_count_df.to_csv("./reference/dataframe/user_review_count.csv")
-    return
+    user_list = [user_review_count_df.index[0], user_review_count_df.index[1],
+                 a[(a.values > 100) & (a.values < 1000)].index[0], a[(a.values <= 100)].index[0]]
+    return user_list
 
 def generate_user_review_txt(user_id, reviews):
     '''
     generate the txt file that contains all reviews of a user
     @param user_id: string of the user unique id
     @param reviews: all reviews csv file
+    @return: the file path that store the txt file
     '''
     # filter out the user review record from all reviews
     user_df = reviews.loc[reviews['user_id'] == user_id]
@@ -49,9 +55,9 @@ def generate_user_review_txt(user_id, reviews):
         return 
     
     # store the user reviews txt file under the src/user_reviews folder
-    file_path = 'reference/user_reviews/' + user_id + 'txt'
+    file_path = 'reference/user_reviews/' + user_id + '.txt'
     user_df[['text']].to_csv(file_path, header=None, index=None, sep=',', mode='a')   
-    return
+    return user_id + '.txt', file_path
 
 def run_autophrase(txt_name, path = '/reference/user_reviews/'):
     shutil.copy(path + txt_name, dir + ori_dir + '/data/' + txt_name)
@@ -78,10 +84,9 @@ def run_autophrase(txt_name, path = '/reference/user_reviews/'):
     print('Autophrase for' + txt_name + 'is Done!')
     return
 
-def user_review_autophrase():
-    user_id_df = pd.read_csv('./reference/dataframe/user_review_count.csv')
-    user_list = [user_id_df.
-    generate_user_review_txt(user_id, reviews)
-    run_autophrase()
+def user_review_autophrase(user_list, review):
+    for i in user_list[0]:
+        fname, fpath = generate_user_review_txt(i, review)
+        run_autophrase(fname)
     
     return
