@@ -1,5 +1,4 @@
 import sys
-import os
 import json
 
 sys.path.insert(0, 'src')
@@ -14,15 +13,16 @@ eda_config = json.load(open('config/eda-params.json'))
 def main(targets):
     if ('eda' or 'all') in targets:
         check_result_folder(**eda_config)
-        df = prepare_review_df(**data_config)
-        run_eda(df)
-        
-                
+        df = prepare_review_df(data_config['review'])
+        save_eda(df)
+                   
     if 'test' in targets:
-        reviews_list = split_data('test/testdata/annotated_test.txt')
-        df, positive_phrases, negative_phrases = make_sentiment_table(reviews_list)
-        convert_eda(**eda_config)
-        save_eda_data(df, positive_phrases, negative_phrases, eda_config['outdir'])
+        check_result_folder(**eda_config)
+        test_df = prepare_review_df(data_config['test_review'])
+        save_eda(test_df)
+    
+    if 'clean' in targets:
+        clean_repo()
     return
 
 if __name__ == '__main__':

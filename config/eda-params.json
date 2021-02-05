@@ -1,5 +1,5 @@
 {
     "out_df": "reference/dataframe",
-    "out_img": "reference/image",
+    "out_img": "reference/img",
     "out_txt" : "reference/user_reviews"
 }

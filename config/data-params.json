@@ -1,4 +1,5 @@
 {
     "review": "data/reviews.csv",
-    "business_csv": "data/business.csv"
+    "business_csv": "data/business.csv",
+    "test_review" : "data/test_review.csv"
 }

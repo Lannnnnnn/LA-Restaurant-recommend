@@ -4,6 +4,7 @@ import sys
 import subprocess
 import matplotlib.pyplot as plt
 import seaborn as sns 
+import pandas as pd
 
 ori_dir = "/originalAutoPhrase"
 dir = os.getcwd()
@@ -12,13 +13,12 @@ def user_distribution(review):
     """
     generate the user review distribution for 20 most review and the overall distribution of reviews
     
-    return a list of user id includes the most and second most reviews user,
-             user id with 100<review<1000, user id with review < 100
+    return a list of user id includes the most and second most reviews user, a random user
     """
-    user_review_count_df = review.user_id.value_counts().sort_values(ascending=False)
+    user_df = review.user_id.value_counts().sort_values(ascending=False)
     
     # generate the user distribution plot
-    x = user_review_count_df.iloc[0:20] 
+    x = user_df.iloc[0:20] 
     plt.figure(figsize=(16,4))
     ax = sns.barplot(x.index, x.values, alpha=0.8)
     plt.title("20 Users with Most Reviews ")
@@ -37,9 +37,8 @@ def user_distribution(review):
     print('save the user distribution image now')
     plt.savefig("./reference/img/most_20_user.png")
     
-    user_list = [user_review_count_df.index[0], user_review_count_df.index[1],
-                 a[(a.values > 100) & (a.values < 1000)].index[0], a[(a.values <= 100)].index[0]]
-    return pd.DataFrame({'user_id':user_review_count_df.index, 'count':user_review_count_df.values}), user_list
+    user_list = [user_df.index[0], user_df.index[1], user_df.index[len(user_df) // 2]]
+    return pd.DataFrame({'user_id':user_df.index, 'count':user_df.values}), user_list
 
 def generate_user_review_txt(user_id, reviews):
     '''
@@ -54,7 +53,7 @@ def generate_user_review_txt(user_id, reviews):
     # if the user does not have any reviews before
     if not len(user_df):
         print('The user does not have any previous review record')
-        return 
+        return None, None
     
     print('generate the txt file for User' + user_id) 
     
@@ -63,7 +62,7 @@ def generate_user_review_txt(user_id, reviews):
     user_df[['text']].to_csv(file_path, header=None, index=None, sep=',', mode='a')   
     return user_id + '.txt', file_path
 
-def run_autophrase(txt_name, path = '/reference/user_reviews/'):
+def run_autophrase(txt_name, path = 'reference/user_reviews/'):
     shutil.copy(path + txt_name, dir + ori_dir + '/data/' + txt_name)
     with open(dir+ ori_dir + "/auto_phrase.sh",'r') as f , open(dir + ori_dir+ "/tmp_autophrase.sh",'w') as new_f:
         autophrased = [next(f) for x in range(146)] # get the autophase part
@@ -85,5 +84,5 @@ def run_autophrase(txt_name, path = '/reference/user_reviews/'):
     # remove the temporary bash script
     os.remove(dir + ori_dir + "/tmp_autophrase.sh")
     os.chdir(dir)
-    print('Autophrase for' + txt_name + 'is Done!')
+    print('Autophrase for' + txt_name + ' is Done!')
     return
