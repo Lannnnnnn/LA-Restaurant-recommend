@@ -29,9 +29,9 @@ def main(targets):
     if 'test' in targets:
         reviews_list = split_data('test/testdata/annotated_test.txt')
         df, positive_phrases, negative_phrases = make_sentiment_table(reviews_list)
-        convert_eda(**eda_config)
         save_eda_data(df, positive_phrases, negative_phrases, eda_config['outdir'])
-    return
+        convert_eda(**eda_config)
+        return
 
 if __name__ == '__main__':
     # run via:
