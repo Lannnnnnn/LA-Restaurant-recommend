@@ -1,3 +1,7 @@
 {
-    "outdir": "data/out/segmentation.txt"
+    "outdir": "data/out/segmentation.txt",
+    "review": "data/reviews.csv",
+    "business_csv": "data/business.csv",
+    "test_review" : "test/testdata/test_review.csv",
+    "test_txt" : "test/testdata/annotated_test.txt"
 }
