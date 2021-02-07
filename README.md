@@ -30,9 +30,7 @@ The default running file is run.py and can be simply run through the command lin
 * download the large dataset for completely running the project. (future work)
 
 ```
-
-```
-$ python3 run.py -- senitment
+$ python3 run.py -- sentiment
 ```
 The default running file is run.py and can be simply run through the command line: python3 run.py -- sentiment
 * TO BE DECIDED
