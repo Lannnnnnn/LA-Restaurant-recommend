@@ -19,6 +19,7 @@ RUN pip3 install pandas
 RUN pip3 install matplotlib
 RUN pip3 install numpy
 RUN pip3 install nltk
+RUN pip3 install seaborn
 RUN rm -f /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python
 
 COPY /run_jupyter.sh /
