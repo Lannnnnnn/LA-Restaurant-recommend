@@ -21,8 +21,7 @@ eda_config = json.load(open('config/eda-params.json'))
 def main(targets):
     if ('data') in targets:
         check_result_folder(**eda_config)
-        reviews_list = split_data(data_config['outdir'])
-        review = prepare_review_df(data_config['review'])
+        reviews_list = split_data(data_config['outdir'], data_config['review'])
     
     if ('sentiment' or 'all') in targets:
         df = make_sentiment_table(reviews_list)

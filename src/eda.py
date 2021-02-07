@@ -3,7 +3,6 @@ from collections import defaultdict
 import re
 import json
 import shutil
-import sys
 import subprocess
 import matplotlib.pyplot as plt
 import seaborn as sns
