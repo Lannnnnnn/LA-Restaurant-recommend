@@ -1,7 +1,11 @@
 # DSC180B Project yelp-recommender-system
 
-## We use the Autophrase as our core NLP analysis method and the original repository for AutoPhrase is linked by submodule: 
-https://github.com/shangjingbo1226/AutoPhrase.
+## Important Things:
+* This repository is contains one main branch and three split branches owned by each of the project team members. Make sure git clone the main branch and run!
+* In our implmentation and analysis, we use the Autophrase as our core NLP analysis method by submoduling into our repository.
+** Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "**[Automated Phrase Mining from Massive Text Corpora](https://arxiv.org/abs/1702.04457)**", accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018.
+If you would like to learn more details about the AutoPhrase method, please refer to the original github repository: https://github.com/shangjingbo1226/AutoPhrase. Namely, you will find the system requirements, all the tools used and detailed explanation of the output.
+
 
 ## AutoPhrase: Automated Phrase Mining from Massive Text Corpora
 
