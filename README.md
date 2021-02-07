@@ -5,6 +5,8 @@
 * In our implmentation and analysis, we use the Autophrase as our core NLP analysis method by submoduling into our repository.
 - If you would like to learn more details about the AutoPhrase method, please refer to the original github repository: https://github.com/shangjingbo1226/AutoPhrase. Namely, you will find the system requirements, all the tools used and detailed explanation of the output.
 - Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "**[Automated Phrase Mining from Massive Text Corpora](https://arxiv.org/abs/1702.04457)**", accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018.
+- The Docker repository is `catherinehou99/yelp-recommender-system:latest`
+- This repo uses AutoPhrase as the git submodule, run the command `git submodule update --init` after cloning this repo.
 
 ## Default Run
 
