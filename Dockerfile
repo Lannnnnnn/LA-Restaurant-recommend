@@ -20,6 +20,7 @@ RUN pip3 install matplotlib
 RUN pip3 install numpy
 RUN pip3 install nltk
 RUN pip3 install seaborn
+RUN pip3 install scikit-learn
 RUN rm -f /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python
 
 COPY /run_jupyter.sh /
