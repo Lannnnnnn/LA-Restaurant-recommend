@@ -70,10 +70,8 @@ The default running file is run.py and can be simply run through the command lin
 - We start designing the website for deploying our recommendation system and the skeleton will be finished by week 6.
 - We are implmenting more advanced recommendation methods such as ALS and explore the system to our whole dataset instead of certain city.
 
-The first step we did was to extract 100 random samples from multi-word phrases output by AutoPhrase. This step was integrated into a method called "get_random" in the util.py file.
-
 
 ### Responsibilities
 * Catherine Hou
 * Vincent Le
-* Shenghan Liu developed TF-IDF algorithm, user AutoPhrase EDA, data tag. Clean the repo and write the readme draft.
+* Shenghan Liu developed TF-IDF algorithm, user AutoPhrase EDA, data tag. Clean, merge the branches and write the first readme draft.
