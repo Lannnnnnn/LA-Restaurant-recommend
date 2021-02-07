@@ -1,0 +1,72 @@
+#user {
+    float: right;
+    margin: 30px;
+    font-size: 15px;
+    color: white;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('food2.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 750px;
+    margin: 0;
+}
+
+input {
+    border-radius: 10px;
+    border: 2px solid whitesmoke;
+    padding: 10px;
+    font-size: 20px;
+    height:15px;
+    width:200px;
+}
+
+#centerpiece {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 150px;
+    color: white;
+}
+
+main > section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#querybox {
+    height: 20px;
+    width: 30%;
+}
+
+button {
+    color: white;
+    border: none;
+    background-color: #d32323;
+    border-color: #d32323;
+    display: inline-block;
+    margin: 0;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 17px;
+    padding-bottom: 14px;
+}
+
+#location {
+    color: gray;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px solid whitesmoke;
+    font-size: 15px;
+    height:30px;
+    width:20%;
+    margin-left: 0px;
+}
+
+select option {
+    color: black;
+}
+
+select option:first-child {
+    color: gray;
+}
