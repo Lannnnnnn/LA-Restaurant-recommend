@@ -33,7 +33,8 @@ The default running file is run.py and can be simply run through the command lin
 $ python3 run.py -- sentiment
 ```
 The default running file is run.py and can be simply run through the command line: python3 run.py -- sentiment
-* TO BE DECIDED
+* Perform sentiment analysis on the reviews text
+* Output that has the sentiment of each sentence in the review with its extracted phrases will be stored in the data/tmp folder
 
 ```
 $ python3 run.py -- eda
@@ -42,6 +43,7 @@ The default running file is run.py and can be simply run through the command lin
 * Perform the EDA analysis on the AutoPhrase result of individual user
 * Perform the EDA analysis on individual city review dataset such as sentiment analysis, feature exploration
 * Convert all the EDA analysis into an HTML report stored under data/eda
+* After running this tag go to the data/eda directory to see the report.html
 
 ```
 $ python3 run.py -- TF-IDF (not implmented yet)
@@ -72,6 +74,6 @@ The default running file is run.py and can be simply run through the command lin
 
 
 ### Responsibilities
-* Catherine Hou
+* Catherine Hou developed the sentiment tag and eda tag.
 * Vincent Le
 * Shenghan Liu developed TF-IDF algorithm, user AutoPhrase EDA, data tag. Clean, merge the branches and write the first readme draft.
