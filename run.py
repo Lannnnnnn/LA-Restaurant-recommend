@@ -19,6 +19,8 @@ data_config = json.load(open('config/data-params.json'))
 eda_config = json.load(open('config/eda-params.json'))
 
 def main(targets):
+    
+    # data ingestion not implmented yet
     if ('data') in targets:
         check_result_folder(**eda_config)
         reviews_list = split_data(data_config['outdir'], data_config['review'])
