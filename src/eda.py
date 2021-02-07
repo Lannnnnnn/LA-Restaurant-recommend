@@ -100,15 +100,16 @@ def run_autophrase(txt_list, path):
                         new_f.write('DEFAULT_TRAIN=${DATA_DIR}/EN/txt/' + name + '\n')
                     index += 1
         # change the access of the bash script
-        os.chmod("./AutoPhrase/tmp_autophrase.sh", 755)
+        os.chmod("./AutoPhrase/tmp_autophrase.sh", 509)
         os.chdir(dir + ori_dir)
         subprocess.run(["./tmp_autophrase.sh"])
     
         # move the result to the result folder
-        shutil.copy(dir + ori_dir + '/DBLP/AutoPhrase.txt', dir+ '/reference/AutoPhrase_result/AutoPhrase_' + name)
+        shutil.copy(dir + ori_dir + '/models/DBLP/AutoPhrase.txt', dir+ '/reference/AutoPhrase_result/AutoPhrase_' + name)
         os.chdir(dir)
-        print('Autophrase for' + i + ' is Done!')
+        print('Autophrase for User ' + name + ' is Done!')
     
     # remove the temporary bash script
     os.remove(dir + ori_dir + "/tmp_autophrase.sh")
+    shutil.rmtree(dir + ori_dir + '/data/EN/txt')
     return
