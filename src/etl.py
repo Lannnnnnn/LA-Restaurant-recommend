@@ -4,9 +4,9 @@ import shutil
 import pandas as pd
 import pdb
 
-def split_data(path, path_review):
+def split_data(test_txt, test_review, business_csv, test_grouped_review, **kwargs):
     '''Return txt back to rows, each row being a review'''
-    with open(path, 'r') as f:
+    with open(test_txt, 'r') as f:
 #     with open('../../DSC180A-Project/data/in/yelp_reviews2.txt', 'r') as f:
         reviews_string = f.read()
         reviews_list = reviews_string.split("\n<REVIEW DELIMITER>\n")
@@ -21,7 +21,7 @@ def split_data(path, path_review):
         'user_id': np.str
         
     }
-    return reviews_list , pd.read_csv(path_review, dtype = dtypes)
+    return reviews_list , pd.read_csv(test_review, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_grouped_review)
 
 def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
     # create the result placement folder if does not exist

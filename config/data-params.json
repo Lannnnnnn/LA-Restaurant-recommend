@@ -3,5 +3,6 @@
     "review": "data/reviews.csv",
     "business_csv": "data/business.csv",
     "test_review" : "test/testdata/test_review.csv",
-    "test_txt" : "test/testdata/annotated_test.txt"
+    "test_txt" : "test/testdata/annotated_test.txt",
+    "test_grouped_review":"test/testdata/las_vagas_test_reviews.csv"
 }
