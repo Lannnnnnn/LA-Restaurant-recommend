@@ -25,10 +25,35 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
                 <br>
                 <select id="location" name="location">
+                    <option disabled selected value>Looking for Food or a Restaurant?</option>
+                    <option value="Food">Food</option>
+                    <option value="Restaurant">Restaurant</option>
+                </select>
+                <select id="location" name="location">
                     <option disabled selected value>Where at?</option>
                     <option value="Las Vegas">Las Vegas</option>
                     <option value="Phoenix">Phoenix</option>
                 </select>
+            </section>
+            <section>
+                <pre id="output"></pre>
+                <!--<script type="text/javascript">
+                    document.getElementById('inputfile').addEventListener('change', function() {
+                        var fr=new FileReader();
+                        fr.onload=function(){
+                            document.getElementById('output').textContent=fr.result;
+                        }
+                        fr.readAsText(this.files[0]);
+                    })
+                </script>-->
+                <script src="results.js">
+                    /*fetch('test/testdata/lv_test_data.csv').then(response => response.text()).then(data => {
+                        const lines = data.split(/\r\n|\n/);
+                        data2 = lines.join('\n\n');
+                        console.log(data2);
+                        document.getElementById('output').textContent=data2;
+                    });*/
+                </script>
             </section>
         </main>
     </body>
