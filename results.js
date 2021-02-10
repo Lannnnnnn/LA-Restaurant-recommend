@@ -26,6 +26,7 @@ function generate_results() {
             elementSep.className = 'result_sep';
             newElement.innerHTML = lines[i];
             document.body.appendChild(newElement);
+            fade_in(newElement);
             document.body.appendChild(elementSep);
         }
         /*data2 = lines.join('\n\n');*/
@@ -39,4 +40,16 @@ function generate_results() {
 function scrolldown() {
     var first_result = document.getElementById("result_element");
     first_result.scrollIntoView();
+}
+
+function fade_in(element) {
+    var opacity = 0.01;
+    var timer = setInterval(function () {
+        if (opacity >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = opacity;
+        element.style.filter = opacity*100;
+        opacity += opacity * 0.1;
+    }, 25);
 }
