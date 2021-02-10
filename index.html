@@ -22,7 +22,7 @@
             </section>
             <section id="query">
                 <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <button type="submit" onclick="generate_results()"><i class="fa fa-search"></i></button>
                 <br>
                 <select id="location" name="location">
                     <option disabled selected value>Looking for Food or a Restaurant?</option>
@@ -36,8 +36,8 @@
                 </select>
             </section>
             <section id='results'>
-                <div id="output"></div>
-                <!--<script type="text/javascript">
+                <!--<div id="output" class="result_div"></div>
+                    <script type="text/javascript">
                     document.getElementById('inputfile').addEventListener('change', function() {
                         var fr=new FileReader();
                         fr.onload=function(){
