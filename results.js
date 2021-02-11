@@ -53,3 +53,21 @@ function fade_in(element) {
         opacity += opacity * 0.1;
     }, 25);
 }
+
+function toggle(button) {
+    var foodbutton = document.getElementById("foodButton");
+    var restbutton = document.getElementById("restaurantButton");
+    if (button == restbutton && button.value == "OFF") {
+        console.log("restbutton");
+        button.value = "ON";
+        button.style = "background-color: #d32323; color: white";
+        foodbutton.value = "OFF";
+        foodbutton.style = "background-color: lightgray; color: black";
+    } else if (button == foodbutton && button.value == "OFF") {
+        console.log("foodbutton");
+        button.value = "ON";
+        button.style = "background-color: #d32323; color: white";
+        restbutton.value = "OFF";
+        restbutton.style = "background-color: lightgray; color: black";
+    };
+}
