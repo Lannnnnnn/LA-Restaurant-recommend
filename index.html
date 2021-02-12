@@ -7,6 +7,46 @@
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>DSC180B Website</title>
+        <header id="explanation">
+            <h1 id="intro">
+                Welcome to our Yelp Recommender System!
+            </h1>
+            <p>
+                The standard recommender system can be made using many different methods: Collaborative
+                 Filtering, Alternating Least Squares, or K-Nearest Neighbors, and utilizing
+                 features such as ratings, number of reviews, categories, genres, and other data that
+                 could possibly be associated with a numerical value. However, there is a rarely used
+                 feature that could change the game: Review Text! 
+            </p>
+            <p>
+                Using numerical data, such as ratings and number of reviews, for a Yelp recommender system
+                will only get you so far. By incorporating the review text as a feature, recommendations
+                can become much more personalized, catering to aspects of a restaurant that can't be
+                summed up in a simple number, such as service, popular food items, and atmosphere.
+                Using this, we hope to create a more personalized recommender system that gathers
+                data from reviews that the user has made and recommend restaurants that are more
+                to the taste of the user. For example, if a user values short wait times and good
+                service in restaurants, and mentions them frequently in their reviews, we hope to
+                be able to recommend restaurants that others have praised for their good wait times
+                and good service. Ultimately, we hope this will be a good way to experiment with
+                growth in recommender systems.
+            </p>
+            <p>
+                Our recommender system consists of two parts: a TF-IDF (Term Frequency - Inverse Document Frequency)
+                recommendation method, and some Targeted Sentiment Analysis. For TF-IDF, we have two different
+                options: to base the documents on restaurant reviews, or base them on user reviews. After
+                selecting the base of the TF-IDF method, we produce phrases for each restaurant, and
+                afterwards calculate the cosine similarity between restaurants. Given a query, this
+                method can find the restaurants that match the query most accurately. The second part of
+                our recommender system is a sentiment analysis on the review text using a program
+                called AutoPhrase, which we use to segment phrases from reviews, as well as
+                VADER (Valence Aware Dictionary and sEn-timent Reasoner) that detects positive and
+                negative sentiments in text. By segmenting phrases from review text and then dividing
+                reviews into positive and negative sentiment phrases, we can rank restaurants
+                according to whether or not the restaurant reviews contain positive sentiment
+                toward the users' queries.
+            </p>
+        </header>
     </head>
     <body>
         <header>

@@ -14,6 +14,8 @@ body {
     background-image: url('food2.jpg');
     background-repeat: no-repeat;
     background-size: 100% 750px;
+    background-attachment: fixed;
+    background-position: center;
     margin: 0;
 }
 
@@ -88,12 +90,26 @@ select option:first-child {
     color: gray;
 }
 
+#explanation {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+#intro {
+    font-size:x-large;
+    font-weight: bold;
+}
+
 div {
     white-space: pre-wrap;
-    width: 100%;
-    background-color: lightgreen;
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px;
 }
 
 #restaurantButton {
     margin-right: 50px;
 }
+
