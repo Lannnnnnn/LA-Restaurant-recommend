@@ -19,7 +19,7 @@ body {
     margin: 0;
 }
 
-input {
+#querybox, #userid {
     border-radius: 10px;
     border: 2px solid whitesmoke;
     padding: 10px;
@@ -47,7 +47,7 @@ main > section {
     outline: none;
 }
 
-button {
+button, #foodButton, #restaurantButton {
     color: white;
     border: none;
     background-color: #d32323;
@@ -61,7 +61,7 @@ button {
     outline: none;
 }
 
-button:hover {
+button:hover, #foodButton:hover, #restaurantButton:hover {
     filter: brightness(110%);
 }
 
@@ -107,9 +107,13 @@ div {
     background-color: white;
     border-radius: 25px;
     padding: 20px;
+    text-align: left;
 }
 
 #restaurantButton {
     margin-right: 50px;
 }
 
+#foodButtonCheck, #restButtonCheck {
+    display: none;
+}

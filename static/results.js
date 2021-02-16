@@ -1,3 +1,4 @@
+/* These functions are currently unneeded
 function generate_results() {
     document.querySelectorAll('.result_div').forEach(e => e.remove());
     document.querySelectorAll('.result_sep').forEach(e => e.remove());
@@ -5,7 +6,6 @@ function generate_results() {
         const lines = data.split(/\r\n|\n/);
         lines.splice(0, 1);
         lines.splice(lines.length-1, 1);
-        /*console.log(lines)*/
         for (var i in lines) {
             info = lines[i].split(',');
             info[0] = "Name: ".concat(info[0]);
@@ -29,10 +29,6 @@ function generate_results() {
             fade_in(newElement);
             document.body.appendChild(elementSep);
         }
-        /*data2 = lines.join('\n\n');*/
-        /*console.log(data2);*/
-        /*data3 = data2.split(',').join('\n');
-        document.getElementById('output').textContent=data3;*/
         scrolldown();
     });
 }
@@ -52,22 +48,28 @@ function fade_in(element) {
         element.style.filter = opacity*100;
         opacity += opacity * 0.1;
     }, 25);
-}
+}*/
 
 function toggle(button) {
     var foodbutton = document.getElementById("foodButton");
     var restbutton = document.getElementById("restaurantButton");
+    var foodCheck = document.getElementById("foodButtonCheck");
+    var restCheck = document.getElementById("restButtonCheck");
     if (button == restbutton && button.value == "OFF") {
         console.log("restbutton");
         button.value = "ON";
+        restCheck.checked = true;
         button.style = "background-color: #d32323; color: white";
         foodbutton.value = "OFF";
+        foodCheck.checked = false;
         foodbutton.style = "background-color: lightgray; color: black";
     } else if (button == foodbutton && button.value == "OFF") {
         console.log("foodbutton");
         button.value = "ON";
+        foodCheck.checked = true;
         button.style = "background-color: #d32323; color: white";
         restbutton.value = "OFF";
+        restCheck.checked = false;
         restbutton.style = "background-color: lightgray; color: black";
     };
 }

@@ -4,7 +4,7 @@
         <meta charset="UTF-8"/>
         <meta name="Description" content="DSC180B Website"/>
         <meta name="Owners" content="A04 Capstone Group 01"/>
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>DSC180B Website</title>
         <header id="explanation">
@@ -50,10 +50,10 @@
     </head>
     <body>
         <header>
-            <h1 id="user">
-                <label for="userid">User ID:</label>
+            <form id="user">
+                <label for="userid" style="font-weight: bold;">User ID:</label>
                 <input type="text" id="userid" name="userid">
-            </h1>
+            </form>
         </header>
         <br>
         <main>
@@ -61,20 +61,37 @@
                 Yelp Recommender System
             </section>
             <section id="query">
-                <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
-                <button type="submit" id="submit" onclick="generate_results()"><i class="fa fa-search"></i></button>
-                <br>
-                <button type="button" id="foodButton" value="ON" onclick="toggle(this)">Food</button>
-                <button type="button" id="restaurantButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Restaurant</button>
-                <select id="location" name="location">
-                    <option disabled selected value>Where at?</option>
-                    <option value="Las Vegas">Las Vegas</option>
-                    <option value="Phoenix">Phoenix</option>
-                </select>
+                <form id="query1" method="POST">
+                    <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
+                    <button type="submit" id="submit"><i class="fa fa-search"></i></button>
+                    <br>
+                    <button type="button" id="foodButton" name="foodButton" value="ON" onclick="toggle(this)">Food</button>
+                    <button type="button" id="restaurantButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Restaurant</button>
+                    <input type="checkbox" id="foodButtonCheck" name="foodButtonCheck" checked>
+                    <input type="checkbox" id="restButtonCheck" name="restButtonCheck">
+                    <select id="location" name="location">
+                        <option disabled selected value>Where at?</option>
+                        <option value="Las Vegas">Las Vegas</option>
+                        <option value="Phoenix">Phoenix</option>
+                    </select>
+                </form>
             </section>
             <section id='results'>
-                <script src="results.js">
-                </script>
+                {% if data %}
+                    {%for line in data%}
+                        <div>{{ 'Name: ' + line[0] + '\n' +
+                                'Address: ' + line[1] + '\n' +
+                                'City: ' + line[2] + '\n' +
+                                'State: ' + line[3] + '\n' + 
+                                'Stars: ' + line[4] + '\n' + 
+                                'Number of Reviews: ' + line[5] + '\n' +
+                                'Categories: ' + line[6] }}</div>
+                        {% if not loop.last %}
+                        <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <script src="{{ url_for('static', filename='results.js') }}" ></script>
             </section>
         </main>
     </body>
