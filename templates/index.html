@@ -63,7 +63,7 @@
             <section id="query">
                 <form id="query1" method="POST">
                     <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
-                    <button type="submit" id="submit"><i class="fa fa-search"></i></button>
+                    <button type="button" id="submit"><i class="fa fa-search"></i></button>
                     <br>
                     <button type="button" id="foodButton" name="foodButton" value="ON" onclick="toggle(this)">Food</button>
                     <button type="button" id="restaurantButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Restaurant</button>
@@ -77,20 +77,59 @@
                 </form>
             </section>
             <section id='results'>
-                {% if data %}
-                    {%for line in data%}
-                        <div>{{ 'Name: ' + line[0] + '\n' +
-                                'Address: ' + line[1] + '\n' +
-                                'City: ' + line[2] + '\n' +
-                                'State: ' + line[3] + '\n' + 
-                                'Stars: ' + line[4] + '\n' + 
-                                'Number of Reviews: ' + line[5] + '\n' +
-                                'Categories: ' + line[6] }}</div>
-                        {% if not loop.last %}
-                        <br>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        /* On click, run the below code */
+                        $("#submit").click(function(){
+                            /* Get query, location, and button */
+                            var querytext = document.getElementById('querybox').value;
+                            var location = document.getElementById('location').value;
+                            var button_1 = document.getElementById('foodButton').value;
+
+                            /* Send this information to python file */
+                            req = $.ajax({
+                                url: "/update",
+                                type: "POST",
+                                data: { querybox : querytext, location : location, foodButton : button_1 }
+                            });
+
+                            /* If the python file successfully processed the above information, do the code below */
+                            req.done(function(data) {
+                                /* Remove pre-existing results */
+                                document.querySelectorAll('.result_div').forEach(e => e.remove());
+                                document.querySelectorAll('.result_sep').forEach(e => e.remove());
+
+                                /* Access the data passed in from the python file */
+                                vars = data['data'];
+                                for (var i in vars) {
+                                    info = vars[i];
+                                    info[0] = "Name: ".concat(info[0]);
+                                    info[1] = "Address: ".concat(info[1]);
+                                    info[2] = "City: ".concat(info[2]);
+                                    info[3] = "State: ".concat(info[3]);
+                                    info[4] = "Stars: ".concat(info[4]);
+                                    info[5] = "Number of Reviews: ".concat(info[5]);
+                                    info[6] = "Categories: ".concat(info[6]);
+                                    vars[i] = info.join('\n');
+                                }
+                                /* For each restaurant, create a new div */
+                                for (var i in vars) {
+                                    var newElement = document.createElement('div');
+                                    var elementSep = document.createElement('br');
+                                    newElement.id = 'result_element';
+                                    newElement.className = 'result_div';
+                                    elementSep.className = 'result_sep';
+                                    newElement.innerHTML = vars[i];
+                                    document.body.appendChild(newElement);
+                                    fade_in(newElement);
+                                    document.body.appendChild(elementSep);
+                                }
+                                scrolldown();
+                            });
+                        })
+                    })
+                </script>
                 <script src="{{ url_for('static', filename='results.js') }}" ></script>
             </section>
         </main>
