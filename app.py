@@ -17,5 +17,6 @@ def my_form_post():
     text = request.form.get('querybox')
     loc = request.form.get('location')
     foodbtn = request.form.get('foodButton')
-    oof = test.test_function(text, loc, foodbtn)
+    vegan = request.form.get('veganButton')
+    oof = test.test_function(text, loc, foodbtn, vegan)
     return jsonify({'result':'success', 'data': oof})

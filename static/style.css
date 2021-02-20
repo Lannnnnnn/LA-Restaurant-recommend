@@ -73,13 +73,19 @@ button:active {
     color: gray;
     margin-top: 10px;
     border-radius: 10px;
-    margin-bottom: 340px;
     border: 2px solid whitesmoke;
     font-size: 15px;
     height:30px;
     width:17%;
+    margin-bottom: 250px;
     margin-left: 0px;
     outline: none;
+}
+
+#veganButton {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 50%;
 }
 
 select option {

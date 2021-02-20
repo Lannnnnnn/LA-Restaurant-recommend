@@ -22,8 +22,16 @@ function fade_in(element) {
 function toggle(button) {
     var foodbutton = document.getElementById("foodButton");
     var restbutton = document.getElementById("restaurantButton");
+    var veganbutton = document.getElementById("veganButton");
     var foodCheck = document.getElementById("foodButtonCheck");
     var restCheck = document.getElementById("restButtonCheck");
+    if (button == veganbutton && button.value == "OFF") {
+        button.value = "ON"
+        button.style = "background-color: green; color: white"
+    } else if (button == veganbutton && button.value == "ON") {
+        button.value = "OFF"
+        button.style = "background-color: lightgray; color: black"
+    }
     if (button == restbutton && button.value == "OFF") {
         console.log("restbutton");
         button.value = "ON";

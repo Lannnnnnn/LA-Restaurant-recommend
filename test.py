@@ -1,4 +1,4 @@
-def test_function(text, location, foodbtn):
+def test_function(text, location, foodbtn, vegan):
     lines = []
     if location == "Las Vegas":
         with open('test/testdata/lv_testdata.csv', 'r') as f:
