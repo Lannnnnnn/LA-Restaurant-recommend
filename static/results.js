@@ -33,7 +33,6 @@ function toggle(button) {
         button.style = "background-color: lightgray; color: black"
     }
     if (button == restbutton && button.value == "OFF") {
-        console.log("restbutton");
         button.value = "ON";
         restCheck.checked = true;
         button.style = "background-color: #d32323; color: white";
@@ -41,7 +40,6 @@ function toggle(button) {
         foodCheck.checked = false;
         foodbutton.style = "background-color: lightgray; color: black";
     } else if (button == foodbutton && button.value == "OFF") {
-        console.log("foodbutton");
         button.value = "ON";
         foodCheck.checked = true;
         button.style = "background-color: #d32323; color: white";
