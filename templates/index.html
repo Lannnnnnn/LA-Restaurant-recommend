@@ -70,7 +70,7 @@
                     <button type="button" id="restaurantButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Restaurant</button>
                     <input type="checkbox" id="foodButtonCheck" name="foodButtonCheck" checked>
                     <input type="checkbox" id="restButtonCheck" name="restButtonCheck">
-                    <select id="location" name="location">
+                    <select id="location" name="location" required>
                         <option disabled selected value>Where at?</option>
                         <option value="Las Vegas">Las Vegas</option>
                         <option value="Phoenix">Phoenix</option>
@@ -84,8 +84,12 @@
                         /* On click, run the below code */
                         $("#submit").click(function(){
                             /* Get query, location, and button */
-                            var querytext = document.getElementById('querybox').value;
                             var location = document.getElementById('location').value;
+                            if (location == "") {
+                                alert("Please choose a location.")
+                                return;
+                            }
+                            var querytext = document.getElementById('querybox').value;
                             var button_1 = document.getElementById('foodButton').value;
                             var vegan = document.getElementById('veganButton').value;
 
