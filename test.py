@@ -13,10 +13,10 @@ def test_function(text, location, foodbtn, vegan):
         else:
             rest = pd.read_csv('test/testdata/LV_rest_info.csv')
             recomm_rest = []
-            target_column = ['name','business_id','categories','stars']
+            target_column = ['name','address','stars','review_count','categories']
             for i in range(5):
                 rank = 'Top_' + str(i)
-                target_id = rest[rest.name == "Carl's Jr"][rank].value_counts().idxmax()
+                target_id = rest[rest.name == text][rank].value_counts().idxmax()
                 recomm_rest.append(rest[rest.business_id == target_id][target_column].values.tolist()[0])
             return recomm_rest
     else:
