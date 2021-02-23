@@ -123,3 +123,11 @@ div {
 #foodButtonCheck, #restButtonCheck {
     display: none;
 }
+
+h1 {
+    margin-top: 0;
+}
+
+p {
+    margin: 0;
+}

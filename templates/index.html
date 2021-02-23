@@ -104,7 +104,7 @@
 
                                 /* Access the data passed in from the python file */
                                 vars = data['data'];
-                                for (var i in vars) {
+                                /*for (var i in vars) {
                                     info = vars[i];
                                     info[0] = "Name: ".concat(info[0]);
                                     info[1] = "Address: ".concat(info[1]);
@@ -114,16 +114,37 @@
                                     info[5] = "Number of Reviews: ".concat(info[5]);
                                     info[6] = "Categories: ".concat(info[6]);
                                     vars[i] = info.join('\n');
-                                }
+                                }*/
                                 /* For each restaurant, create a new div */
                                 for (var i in vars) {
+                                    info = vars[i];
                                     var newElement = document.createElement('div');
+                                    var restName = document.createElement('h1');
+                                    var restAddress = document.createElement('p');
+                                    var restCity = document.createElement('p');
+                                    var restState = document.createElement('p');
+                                    var restStars = document.createElement('p');
+                                    var restNumRevs = document.createElement('p');
+                                    var restCats = document.createElement('p');
+                                    restName.innerHTML = info[0];
+                                    restAddress.innerHTML = "Address: ".concat(info[1]);
+                                    restCity.innerHTML = "City: ".concat(info[2]);
+                                    restState.innerHTML = "State: ".concat(info[3]);
+                                    restStars.innerHTML = "Stars: ".concat(info[4]);
+                                    restNumRevs.innerHTML = "Number of Reviews: ".concat(info[5]);
+                                    restCats.innerHTML = "Categories: ".concat(info[6]);
                                     var elementSep = document.createElement('br');
                                     newElement.id = 'result_element';
                                     newElement.className = 'result_div';
                                     elementSep.className = 'result_sep';
-                                    newElement.innerHTML = vars[i];
                                     document.body.appendChild(newElement);
+                                    newElement.appendChild(restName);
+                                    newElement.appendChild(restAddress);
+                                    newElement.appendChild(restCity);
+                                    newElement.appendChild(restState);
+                                    newElement.appendChild(restStars);
+                                    newElement.appendChild(restNumRevs);
+                                    newElement.appendChild(restCats);
                                     fade_in(newElement);
                                     document.body.appendChild(elementSep);
                                 }
