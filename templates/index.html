@@ -104,20 +104,11 @@
 
                                 /* Access the data passed in from the python file */
                                 vars = data['data'];
-                                /*for (var i in vars) {
-                                    info = vars[i];
-                                    info[0] = "Name: ".concat(info[0]);
-                                    info[1] = "Address: ".concat(info[1]);
-                                    //info[2] = "City: ".concat(info[2]);
-                                    //info[3] = "State: ".concat(info[3]);
-                                    info[2] = "Stars: ".concat(info[2]);
-                                    info[3] = "Number of Reviews: ".concat(info[3]);
-                                    info[4] = "Categories: ".concat(info[4]);
-                                    vars[i] = info.join('\n');
-                                }*/
+
                                 /* For each restaurant, create a new div */
                                 for (var i in vars) {
                                     info = vars[i];
+                                    /* For each div, add in paragraphs, each with info */
                                     var newElement = document.createElement('div');
                                     var restName = document.createElement('h1');
                                     var restAddress = document.createElement('p');
@@ -126,6 +117,7 @@
                                     var restStars = document.createElement('p');
                                     var restNumRevs = document.createElement('p');
                                     var restCats = document.createElement('p');
+                                    /* Fill paragraph elements with info */
                                     restName.innerHTML = info[0];
                                     restAddress.innerHTML = "Address: ".concat(info[1]);
                                     restCity.innerHTML = "City: ".concat(info[2]);
@@ -133,10 +125,12 @@
                                     restStars.innerHTML = "Stars: ".concat(info[4]);
                                     restNumRevs.innerHTML = "Number of Reviews: ".concat(info[5]);
                                     restCats.innerHTML = "Categories: ".concat(info[6]);
+                                    /* Set up breaks and class ids and names */
                                     var elementSep = document.createElement('br');
                                     newElement.id = 'result_element';
                                     newElement.className = 'result_div';
                                     elementSep.className = 'result_sep';
+                                    /* Append div to body, append info to div */
                                     document.body.appendChild(newElement);
                                     newElement.appendChild(restName);
                                     newElement.appendChild(restAddress);
