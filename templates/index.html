@@ -65,7 +65,7 @@
                     <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
                     <button type="button" id="submit"><i class="fa fa-search"></i></button>
                     <br>
-                    <button type="button" id="veganButton" onclick="toggle(this)" value="OFF" style="background-color: lightgray; color: black;">Vegetarian</button>
+                    <button type="button" id="veganButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Vegetarian</button>
                     <button type="button" id="foodButton" name="foodButton" value="ON" onclick="toggle(this)">Food</button>
                     <button type="button" id="restaurantButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Restaurant</button>
                     <input type="checkbox" id="foodButtonCheck" name="foodButtonCheck" checked>
@@ -97,7 +97,7 @@
                             req = $.ajax({
                                 url: "/update",
                                 type: "POST",
-                                data: { querybox : querytext, location : location, foodButton : button_1 }
+                                data: { querybox : querytext, location : location, foodButton : button_1, veganButton: vegan}
                             });
 
                             /* If the python file successfully processed the above information, do the code below */
