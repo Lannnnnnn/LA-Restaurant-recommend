@@ -65,7 +65,7 @@
                     <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
                     <button type="button" id="submit"><i class="fa fa-search"></i></button>
                     <br>
-                    <button type="button" id="veganButton" onclick="toggle(this)" value="OFF" style="background-color: lightgray; color: black;">Vegetarian</button>
+                    <button type="button" id="veganButton" onclick="toggle(this)" value="OFF" style="background-color: lightgray; color: black;">Vegan</button>
                     <button type="button" id="foodButton" name="foodButton" value="ON" onclick="toggle(this)">Food</button>
                     <button type="button" id="restaurantButton" value="OFF" onclick="toggle(this)" style="background-color: lightgray; color: black;">Restaurant</button>
                     <input type="checkbox" id="foodButtonCheck" name="foodButtonCheck" checked>
@@ -93,6 +93,10 @@
                             var button_1 = document.getElementById('foodButton').value;
                             var vegan = document.getElementById('veganButton').value;
 
+                            /* this is for displaying the link to the restaurant */
+                            let business_pre = 'http://yelp.com/biz/';
+                            let business_post = '/?show_platform_modal=True';
+
                             /* Send this information to python file */
                             req = $.ajax({
                                 url: "/update",
@@ -107,46 +111,51 @@
                                 document.querySelectorAll('.result_sep').forEach(e => e.remove());
 
                                 /* Access the data passed in from the python file */
+                                console.log()
                                 vars = data['data'];
+                                
+                                if (button_1 == "ON") {
+                                    /* For each restaurant, create a new div */
+                                    for (var i in vars) {
+                                        info = vars[i];
+                                        /* For each div, add in paragraphs, each with info */
+                                        var newElement = document.createElement('div');
+                                        var restName = document.createElement('h1');
+                                        var restCity = document.createElement('p');
+                                        var restCats = document.createElement('p');
+                                        var restStars = document.createElement('p');
+                                        var goodService = document.createElement('p');
+                                        var numMentions = document.createElement('p');
+                                        var restWebsite = document.createElement('p');
+                                        /* Fill paragraph elements with info */
 
-                                /* For each restaurant, create a new div */
-                                for (var i in vars) {
-                                    info = vars[i];
-                                    /* For each div, add in paragraphs, each with info */
-                                    var newElement = document.createElement('div');
-                                    var restName = document.createElement('h1');
-                                    var restAddress = document.createElement('p');
-                                    var restCity = document.createElement('p');
-                                    var restState = document.createElement('p');
-                                    var restStars = document.createElement('p');
-                                    var restNumRevs = document.createElement('p');
-                                    var restCats = document.createElement('p');
-                                    /* Fill paragraph elements with info */
-                                    restName.innerHTML = info[0];
-                                    restAddress.innerHTML = "Address: ".concat(info[1]);
-                                    restCity.innerHTML = "City: ".concat(info[2]);
-                                    restState.innerHTML = "State: ".concat(info[3]);
-                                    restStars.innerHTML = "Stars: ".concat(info[4]);
-                                    restNumRevs.innerHTML = "Number of Reviews: ".concat(info[5]);
-                                    restCats.innerHTML = "Categories: ".concat(info[6]);
-                                    /* Set up breaks and class ids and names */
-                                    var elementSep = document.createElement('br');
-                                    newElement.id = 'result_element';
-                                    newElement.className = 'result_div';
-                                    elementSep.className = 'result_sep';
-                                    /* Append div to body, append info to div */
-                                    document.body.appendChild(newElement);
-                                    newElement.appendChild(restName);
-                                    newElement.appendChild(restAddress);
-                                    newElement.appendChild(restCity);
-                                    newElement.appendChild(restState);
-                                    newElement.appendChild(restStars);
-                                    newElement.appendChild(restNumRevs);
-                                    newElement.appendChild(restCats);
-                                    fade_in(newElement);
-                                    document.body.appendChild(elementSep);
+                                        restName.innerHTML = info[1];
+                                        restCity.innerHTML = "City: ".concat(info[4]);
+                                        restCats.innerHTML = "Categories: ".concat(info[5]);
+                                        restStars.innerHTML = "Stars: ".concat(info[6]);
+                                        numMentions.innerHTML = "Number of Mentions: ".concat(info[7]);
+                                        goodService.innerHTML = "Good Service: ".concat(info[8]);
+                                        restWebsite.innerHTML = "Website: ".concat(business_pre.concat(info[2]).concat(business_post));
+                                        /* Set up breaks and class ids and names */
+                                        var elementSep = document.createElement('br');
+                                        newElement.id = 'result_element';
+                                        newElement.className = 'result_div';
+                                        elementSep.className = 'result_sep';
+                                        /* Append div to body, append info to div */
+                                        document.body.appendChild(newElement);
+                                        newElement.appendChild(restName);
+                                        newElement.appendChild(restCity);
+                                        newElement.appendChild(restCats);
+                                        newElement.appendChild(restStars);
+                                        newElement.appendChild(numMentions);
+                                        newElement.appendChild(goodService);
+                                        newElement.appendChild(restWebsite);
+                                        fade_in(newElement);
+                                        document.body.appendChild(elementSep);
+                                    }
+                                    scrolldown();
+
                                 }
-                                scrolldown();
                             });
                         })
                     })

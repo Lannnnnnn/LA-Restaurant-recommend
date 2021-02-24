@@ -1,3 +1,7 @@
+let store = { // global variable for storage
+    lines: [], // will hold matching restaurants w/ phrase
+}
+
 /* On search, scroll down to results */
 function scrolldown() {
     var first_result = document.getElementById("result_element");
