@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import re
 import nltk
-nltk.download('punkt')
-nltk.download('vader_lexicon')
+nltk.download('punkt', quiet=True)
+nltk.download('vader_lexicon', quiet=True)
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 sys.path.insert(0, 'src')
@@ -24,11 +24,13 @@ def main(targets):
     # data ingestion not implmented yet
     if ('data') in targets:
         check_result_folder(**eda_config)
-        reviews_list, review, business_df, grouped_review = split_data(**data_config)
+        test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
     
     if ('sentiment' or 'all') in targets:
-        df = make_sentiment_table(reviews_list)
-        df, positive_phrases, negative_phrases = make_sentiment_table(reviews_list)
+        test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
+        df = make_sentiment_table(test_reviews_list)
+        df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
+        make_website_table(df, data_config["restaurant_dir"])
         
     if ('tfidf' or 'all') in targets:
         tf_idf_on_user(grouped_review, business_df, amount = 4)
@@ -41,9 +43,13 @@ def main(targets):
         clean_repo()
         
     if 'test' in targets:
+        data_config["test_txt"] = "test/testdata/annotated_test.txt"
+        data_config["restaurant_dir"] = "test/testdata/restaurants.csv"
+        # data_config["test_grouped_review"] = "test/testdata/restaurants.csv"
         check_result_folder(**eda_config)
         test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
-        df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list)
+        df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
+        make_website_table(df, data_config["restaurant_dir"])
         save_eda_data(df, positive_phrases, negative_phrases, eda_config['out_df'], eda_config['out_txt'], test_review)
         tf_idf_on_user(test_grouped_review, business_df, amount = 4)
         convert_eda(**eda_config)

@@ -1,58 +1,58 @@
 "This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 This was the best <phrase>fried chicken</phrase> I have ever eaten. But the <phrase>waitress</phrase> was so rude to us. Awful <phrase>customer service</phrase>!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 We ordered the <phrase>fried chicken</phrase> and <phrase>beer</phrase> and went to heaven because it was so delicious. The service was extremely slow, we waited forever!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Drive-thru <phrase>fried chicken</phrase> and <phrase>beer</phrase>? HOW AMAZING IS THIS!
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 Don't come into this restaurant. Save your money. I never want a <phrase>waitress</phrase> like that ever again. She needs to learn how to correct her poor <phrase>customer service</phrase>.
-<REVIEW DELIMITER>
+<<phrase>REVIEW DELIMITER</phrase>>
 
 "
