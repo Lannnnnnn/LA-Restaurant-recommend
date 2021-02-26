@@ -14,6 +14,7 @@ RUN \
 
 RUN apt-get update && apt-get install -y python3.7 && apt-get install -y python3-pip
 RUN apt-get update && apt-get install -y git
+RUN pip3 install jupyter
 RUN pip3 install notebook
 RUN pip3 install pandas
 RUN pip3 install matplotlib
