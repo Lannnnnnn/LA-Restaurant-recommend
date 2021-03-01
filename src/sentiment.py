@@ -61,7 +61,6 @@ def make_sentimented_restaurant(reviews_list, VAL):
     df = df.assign(positive)
     
 def clean_restaurant(df, restaurant_dir):
-    pdb.set_trace()
     starting_ind = list(df[(df['index']==0) & (df['Unnamed: 0']==0)].index)
     i = 0
     add = 0
@@ -98,14 +97,14 @@ def make_sentiment_table(reviews_list, restaurant_dir):
     df.to_csv(restaurant_dir)
     return df, positive_phrases, negative_phrases
     
-def make_website_table(df, restaurant_dir):
+def make_website_table(df, restaurant_dir, subset_dir):
     '''Create the dataframe used for the website'''
     print(" -------- Building Restaurant Table ------")
     chunksize = 100000
     data_iterator = pd.read_csv(restaurant_dir, index_col=0, chunksize=chunksize)
-    lv = pd.read_csv('data/Las_Vegas_reviews.csv')
+    lv = pd.read_csv(subset_dir)
     chunk_list = list()
-    val = 0.5
+    val = 0.3
     i = 0
     start_time = time.time()
     for data_chunk in data_iterator:

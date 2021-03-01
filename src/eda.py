@@ -7,6 +7,7 @@ import subprocess
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import pdb
 
 ori_dir = "/AutoPhrase"
 dir = os.getcwd()
@@ -86,22 +87,29 @@ def generate_user_review_txt(user_id_list, reviews, path):
     return txt_list
 
 def run_autophrase(txt_list, path):
-    shutil.copytree(path, dir + ori_dir + '/data/EN/txt')
+#     pdb.set_trace()
+    try:
+        shutil.copytree(path, dir + ori_dir + '/data/EN/txt')
+    except:
+        shutil.rmtree(dir + ori_dir + '/data/EN/txt')
+        shutil.copytree(path, dir + ori_dir + '/data/EN/txt')
     for name in txt_list:
         if name is not None:
             with open(dir+ ori_dir + "/auto_phrase.sh",'r') as f , open(dir + ori_dir+ "/tmp_autophrase.sh",'w') as new_f:
-                autophrased = [next(f) for x in range(146)] # get the autophase part
+                autophrased = [next(f) for x in range(90)] # get the autophase part
                 index = 0
                 for i in autophrased:
-                    if index != 23:
+                    if index != 15:
                         new_f.write(i)
                     else:
                         new_f.write('DEFAULT_TRAIN=${DATA_DIR}/EN/txt/' + name + '\n')
                     index += 1
+
         # change the access of the bash script
         os.chmod("./AutoPhrase/tmp_autophrase.sh", 509)
         os.chdir(dir + ori_dir)
         subprocess.run(["./tmp_autophrase.sh"])
+        
     
         # move the result to the result folder
         shutil.copy(dir + ori_dir + '/models/DBLP/AutoPhrase.txt', dir+ '/reference/AutoPhrase_result/AutoPhrase_' + name)

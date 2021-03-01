@@ -1,9 +1,10 @@
 {
     "outdir": "data/out/segmentation.txt",
-    "review": "data/reviews.csv",
-    "business_csv": "data/business.csv",
+    "review": "data/raw/reviews.csv",
+    "business_csv": "data/raw/business.csv",
     "test_review" : "test/testdata/test_review.csv",
-    "test_txt": "data/segmentation.txt",
+    "test_txt": "reference/AutoPhrase_result/Phoenix.txt",
     "test_grouped_review":"test/testdata/las_vagas_test_reviews.csv",
-    "restaurant_dir": "data/tmp/restaurant.csv"
+    "restaurant_dir": "data/tmp/Phoenix.csv",
+    "subset_dir": "data/tmp/Phoenix_subset.csv"
 }
