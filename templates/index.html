@@ -149,6 +149,46 @@
                                     scrolldown();
 
                                 }
+                                else{
+                                    /* For each restaurant, create a new div */
+                                    for (var i in vars) {
+                                        info = vars[i];
+                                        /* For each div, add in paragraphs, each with info */
+                                        var newElement = document.createElement('div');
+                                        var restName = document.createElement('h1');
+                                        var restCats = document.createElement('p');
+                                        var restStars = document.createElement('p');
+                                        var address = document.createElement('p');
+                                        var numMentions = document.createElement('p');
+                                        var restWebsite = document.createElement('p');
+                                        /* Fill paragraph elements with info */
+
+                                        restName.innerHTML = info[0];
+                                        address.innerHTML = "Restaurant Address: ".concat(info[1]);
+                                        restStars.innerHTML = "Stars: ".concat(info[2].toFixed(2));
+                                        numMentions.innerHTML = "Number of Reviews: ".concat(info[3]);
+                                        restCats.innerHTML = "Categories: ".concat(info[4]);
+                                        restWebsite.innerHTML = "Website: ".concat(business_pre.concat(info[5]).concat(business_post));
+                                        
+                                        /* Set up breaks and class ids and names */
+                                        var elementSep = document.createElement('br');
+                                        newElement.id = 'result_element';
+                                        newElement.className = 'result_div';
+                                        elementSep.className = 'result_sep';
+                                        /* Append div to body, append info to div */
+
+                                        document.body.appendChild(newElement);
+                                        newElement.appendChild(restName);
+                                        newElement.appendChild(address);
+                                        newElement.appendChild(restStars);
+                                        newElement.appendChild(numMentions);
+                                        newElement.appendChild(restCats);
+                                        newElement.appendChild(restWebsite);
+                                        fade_in(newElement);
+                                        document.body.appendChild(elementSep);
+                                    }
+                                    scrolldown();
+                                }
                             });
                         })
                     })

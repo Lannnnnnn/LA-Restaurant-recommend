@@ -12,10 +12,12 @@ def find_substring(record, query):
 def test_function(text, location, foodbtn, vegan):
     lines = []
     location = location.replace(' ', '_')
-    restaurant_path = './data/{0}.csv'.format(location)
+    food_query_path = './data/{0}.csv'.format(location)
+    restaurant_query_path = './data/{0}_rest_info.csv'.format(location)
+    
     if foodbtn == 'ON':
 #         df = pd.read_csv('./data/restaurant_phrases.csv')
-        df = pd.read_csv(restaurant_path)
+        df = pd.read_csv(food_query_path)
         if vegan == 'ON':
             df = df[df['categories'].str.contains('Vegetarian')]
 
@@ -37,9 +39,9 @@ def test_function(text, location, foodbtn, vegan):
         return df.values.tolist()
 
     else:
-        rest = pd.read_csv('test/testdata/LV_rest_info.csv')
+        rest = pd.read_csv(restaurant_query_path)
         recomm_rest = []
-        target_column = ['name','address','stars','review_count','categories']
+        target_column = ['name','address','stars','review_count','categories','business_id']
         for i in range(5):
             rank = 'Top_' + str(i)
             target_id = rest[rest.name == text][rank].value_counts().idxmax()
