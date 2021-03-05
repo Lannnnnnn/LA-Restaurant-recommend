@@ -4,7 +4,7 @@
 * This repository is contains one main branch and three split branches owned by each of the project team members. Make sure git clone the main branch and run!
 * In our implmentation and analysis, we use the Autophrase as our core NLP analysis method by submoduling into our repository.
 * This repo uses AutoPhrase as the git submodule, run the command `git submodule update --init` after cloning this repo.
-* The Docker Image and Tag is `catherinehou99/yelp-recommender-system:checkpoint`
+* The Docker Image and Tag is `launch.sh -i catherinehou99/yelp-recommender-system:latest -c 8 -m 20 -P Always`
 - If you would like to learn more details about the AutoPhrase method, please refer to the original github repository: https://github.com/shangjingbo1226/AutoPhrase. Namely, you will find the system requirements, all the tools used and detailed explanation of the output.
 - Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "**[Automated Phrase Mining from Massive Text Corpora](https://arxiv.org/abs/1702.04457)**", accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018.
 
@@ -77,5 +77,5 @@ The default running file is run.py and can be simply run through the command lin
 
 ### Responsibilities
 * Catherine Hou developed the sentiment tag and eda tag.
-* Vincent Le created the dockerfile and developed the website skeleton (not yet in main branch).
+* Vincent Le created the dockerfile and developed the website (not in main branch).
 * Shenghan Liu developed TF-IDF algorithm, user AutoPhrase EDA, data tag. Clean, merge the branches and write the first readme draft.
