@@ -22,19 +22,18 @@ def test_function(text, location, foodbtn, vegan):
             df = df[df['categories'].str.contains('Vegetarian')]
 
         df['phrases'] = df['phrases'].apply(lambda x: json.loads(x))
+        
+        df['stars'] = df['stars'].apply(lambda x: round(x, 1))
+        
 
         df = df.assign(numMentions=df['phrases']\
         .apply(lambda x: find_substring(x, text)))\
         .dropna()\
         .sort_values(by='numMentions', ascending=False)
 
-        df = df.head()
-
-        df['stars'] = df['stars'].apply(lambda x: round(x, 1))
-
         df = df.assign(goodService=df['phrases']\
         .apply(lambda x: find_substring(x, "service")))\
-        .sort_values(by='numMentions', ascending=False)    
+        .sort_values(by=['numMentions', 'stars'], ascending=False)    
 
         return df.values.tolist()
 
