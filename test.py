@@ -41,10 +41,19 @@ def test_function(text, location, foodbtn, vegan):
         rest = pd.read_csv(restaurant_query_path)
         recomm_rest = []
         target_column = ['name','address','stars','review_count','categories','business_id']
-        for i in range(5):
+        target_id_list = []
+        index = 0
+        for i in range(20):
+            if index >= 5:
+                break
             rank = 'Top_' + str(i)
             target_id = rest[rest.name == text][rank].value_counts().idxmax()
-            recomm_rest.append(rest[rest.business_id == target_id][target_column].values.tolist()[0])
+            if target_id in target_id_list:
+                continue
+            else:
+                index += 1
+                target_id_list.append(target_id)
+                recomm_rest.append(rest[rest.business_id == target_id][target_column].values.tolist()[0])
         return recomm_rest
 #     else:
 #         with open('test/testdata/ph_testdata.csv', 'r') as f:
