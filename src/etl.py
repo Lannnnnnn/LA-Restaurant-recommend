@@ -24,19 +24,23 @@ spark = SparkSession \
 def reviews_by_city(city_name, review_path, business_path):
     print(' --------Creating subset for: ' + city_name + ' --------')
     business_schema = T.StructType([
-    T.StructField("_c01", T.IntegerType(), True),
+    #T.StructField("_c01", T.IntegerType(), True),
     T.StructField("name", T.StringType(), True),
     T.StructField("business_id", T.StringType(), True),   
     T.StructField("city", T.StringType(), True),   
-    T.StructField("categories", T.StringType(), True),                  
+    T.StructField("categories", T.StringType(), True),
+    T.StructField("address", T.StringType(), True),
+    T.StructField("review_count", T.IntegerType(), True),
+    T.StructField("hours", T.StringType(), True),                  
     ])
 
     reviews_schema = T.StructType([
-        T.StructField("_c01", T.IntegerType(), True),
+        #T.StructField("_c01", T.IntegerType(), True),
         T.StructField("review_id", T.StringType(), True),   
         T.StructField("business_id", T.StringType(), True),   
         T.StructField("text", T.StringType(), True),      
-        T.StructField("stars", T.FloatType(), True)                    
+        T.StructField("stars", T.FloatType(), True),
+        T.StructField("user_id", T.StringType(),  True),                  
     ])
     
     business = spark.read.csv("./data/raw/business.csv", header=True, multiLine=True, schema=business_schema, quote="\"", escape="\"")
@@ -45,7 +49,8 @@ def reviews_by_city(city_name, review_path, business_path):
     df = business.filter(business.city == city_name)\
 .filter(business.categories.contains("Restaurants")|business.categories.contains('Food'))\
 .join(reviews, business.business_id == reviews.business_id, 'inner')\
-.drop(reviews.business_id).drop(reviews._c01).drop(business._c01)
+.drop(reviews.business_id)
+#.drop(reviews._c01).drop(business._c01)
     
     res = df.toPandas().drop_duplicates(subset='review_id')
     
@@ -77,7 +82,7 @@ def autophrase_reviews(txt_list, path='data/tmp/reviews'):
                         new_f.write('DEFAULT_TRAIN=${DATA_DIR}/EN/reviews/' + name + '\n')
                     index += 1
             with open(dir+ ori_dir + "/phrasal_segmentation.sh",'r') as f , open(dir + ori_dir+ "/tmp_autophrase.sh",'a') as new_f:
-                autophrased = [next(f) for x in range(90)] # get the autophase part
+                autophrased = [next(f) for x in range(90)] 
                 index = 0
                 new_f.write('\n')
                 for i in autophrased:
@@ -102,7 +107,7 @@ def autophrase_reviews(txt_list, path='data/tmp/reviews'):
     return
     
 
-def split_data(test_txt, test_review, business_csv, test_grouped_review, **kwargs):
+def split_testdata(test_txt, test_user, business_csv, test_review, **kwargs):
     '''Return txt back to rows, each row being a review'''
     with open(test_txt, 'r') as f:
 #     with open('../../DSC180A-Project/data/in/yelp_reviews2.txt', 'r') as f:
@@ -120,8 +125,7 @@ def split_data(test_txt, test_review, business_csv, test_grouped_review, **kwarg
         'user_id': np.str
         
     }
-    
-    return reviews_list , pd.read_csv(test_review, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_grouped_review)
+    return reviews_list , pd.read_csv(test_user, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_review)
 
 def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
     # create the result placement folder if does not exist
@@ -140,6 +144,9 @@ def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
         os.system(command)
     if os.path.isdir('data/tmp') is False:
         command = 'mkdir -p ' + 'data/tmp'
+        os.system(command)
+    if os.path.isdir('data/tmp/reviews') is False:
+        command = 'mkdir -p ' + 'data/tmp/reviews'
         os.system(command)
     if os.path.isdir('../AutoPhrase/data/EN/reviews') is False:
         command = 'mkdir -p ' + '../AutoPhrase/data/EN/reviews'

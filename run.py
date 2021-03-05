@@ -26,7 +26,6 @@ def main(targets):
         check_result_folder(**eda_config)
         reviews_by_city(city_name='Phoenix', review_path=data_config['review'], business_path=data_config['business_csv'])
         autophrase_reviews(txt_list=['Phoenix'])
-        test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
     
     if ('sentiment' or 'all') in targets:
         test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
@@ -35,7 +34,8 @@ def main(targets):
         make_website_table(df, data_config["restaurant_dir"], data_config["subset_dir"])
         
     if ('tfidf' or 'all') in targets:
-        tf_idf_on_user(test_grouped_review, business_df, amount = 4)
+        review, business = prepare_review(data_config["subset_dir"], data_config["business_csv"])
+        tf_idf_result(review, business, ['Phoenix'], amount = 20)
         
     if ('eda' or 'all') in targets:
         save_eda_data(df, positive_phrases, negative_phrases, eda_config['outdir'], eda_config['out_txt'], review)
@@ -47,14 +47,12 @@ def main(targets):
     if 'test' in targets:
         data_config["test_txt"] = "test/testdata/annotated_test.txt"
         data_config["restaurant_dir"] = "test/testdata/restaurants.csv"
-        # data_config["test_grouped_review"] = "test/testdata/restaurants.csv"
         check_result_folder(**eda_config)
-        test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
-        df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
-        make_website_table(df, data_config["restaurant_dir"])
-        save_eda_data(df, positive_phrases, negative_phrases, eda_config['out_df'], eda_config['out_txt'], test_review)
-        tf_idf_on_user(test_grouped_review, business_df, amount = 4)
-        # convert_eda(**eda_config)
+        test_reviews_list, test_user, business_df, test_review= split_testdata(**data_config)
+        #df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
+        #make_website_table(df, data_config["restaurant_dir"])
+        #save_eda_data(df, positive_phrases, negative_phrases, eda_config['out_df'], eda_config['out_txt'], test_user)
+        tf_idf_result(test_review, business_df, ['Las Vegas', 'Phoenix'], amount = 4)
         return
 
 if __name__ == '__main__':
