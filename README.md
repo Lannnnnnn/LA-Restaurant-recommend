@@ -77,5 +77,5 @@ The default running file is run.py and can be simply run through the command lin
 
 ### Responsibilities
 * Catherine Hou developed the sentiment tag and eda tag.
-* Vincent Le created the dockerfile and developed the website skeleton (not yet in main branch).
+* Vincent Le created the dockerfile and developed the website (not in main branch).
 * Shenghan Liu developed TF-IDF algorithm, user AutoPhrase EDA, data tag. Clean, merge the branches and write the first readme draft.
