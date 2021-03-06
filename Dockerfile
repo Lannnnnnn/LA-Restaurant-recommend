@@ -23,6 +23,7 @@ RUN pip3 install nltk
 RUN pip3 install seaborn
 RUN pip3 install scikit-learn
 RUN pip3 install flask
+RUN pip3 install pyspark
 RUN rm -f /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python
 
 COPY /run_jupyter.sh /
