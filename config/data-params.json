@@ -8,6 +8,6 @@
     "restaurant_dir": "data/tmp/Phoenix.csv",
     "subset_dir": "data/tmp/Phoenix_subset.csv",
     "city_name": "Phoenix",
-    "review_test": "test/testdata/test_review_csv.csv",
+    "review_test": "test/testdata/test_reviews_csv.csv",
     "business_csv_test": "test/testdata/test_business_csv.csv"
 }

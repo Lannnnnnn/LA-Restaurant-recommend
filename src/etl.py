@@ -22,9 +22,10 @@ spark = SparkSession \
 
 
 def reviews_by_city(city_name, review_path, business_path):
+    '''Create a subset for the given city'''
     print(' --------Creating subset for: ' + city_name + ' --------')
+    # Set up schema for pyspark
     business_schema = T.StructType([
-    #T.StructField("_c01", T.IntegerType(), True),
     T.StructField("name", T.StringType(), True),
     T.StructField("business_id", T.StringType(), True),   
     T.StructField("city", T.StringType(), True),   
@@ -35,27 +36,31 @@ def reviews_by_city(city_name, review_path, business_path):
     ])
 
     reviews_schema = T.StructType([
-        #T.StructField("_c01", T.IntegerType(), True),
         T.StructField("review_id", T.StringType(), True),   
         T.StructField("business_id", T.StringType(), True),   
         T.StructField("text", T.StringType(), True),      
         T.StructField("stars", T.FloatType(), True),
         T.StructField("user_id", T.StringType(),  True),                  
     ])
+    
+    # Read in data with pyspark
     review_path = "./" + review_path
     business_path = "./" + business_path
-    business = spark.read.csv("./test/testdata/test_business_csv.csv", header=True, multiLine=True, schema=business_schema, quote="\"", escape="\"")
-    reviews = spark.read.csv("./test/testdata/test_reviews_csv.csv", header=True, multiLine=True, schema=reviews_schema, quote="\"", escape="\"")
+    business = spark.read.csv(business_path, header=True, multiLine=True, schema=business_schema, quote="\"", escape="\"")
+    reviews = spark.read.csv(review_path, header=True, multiLine=True, schema=reviews_schema, quote="\"", escape="\"")
     
+    # Filtering process for city; categories must include restaurants/food
     df = business.filter(business.city == city_name)\
 .filter(business.categories.contains("Restaurants")|business.categories.contains('Food'))\
 .join(reviews, business.business_id == reviews.business_id, 'inner')\
 .drop(reviews.business_id)
 #.drop(reviews._c01).drop(business._c01)
     
+    # Save city as CSV
     res = df.toPandas().drop_duplicates(subset='review_id').reset_index(drop=True)
     res.to_csv('./data/tmp/' + city_name + '_subset.csv')
     
+    # Annotate the reviews text with this delimiter for phrasal segmentation
     with open('data/tmp/reviews/' + city_name + '.txt', 'w') as f:
         content = res['text'].str.cat(sep="REVIEW_DELIMITER")
         f.write(json.dumps(content))   
@@ -63,12 +68,16 @@ def reviews_by_city(city_name, review_path, business_path):
     print('Subset Created')
     
 def autophrase_reviews(txt_list, path='data/tmp/reviews'):
+    '''Perform AutoPhrase on the Reviews Text'''
     print('Starting AutoPhrase')
+    # Matching directories with the AutoPhrase Repo
     try:
         shutil.copytree(path, dir + ori_dir + '/data/EN/reviews')
     except:
         shutil.rmtree(dir + ori_dir + '/data/EN/reviews')
         shutil.copytree(path, dir + ori_dir + '/data/EN/reviews')
+        
+    # Adjust the AutoPhrase bash for our requirements
     for name in txt_list:
         if name is not None:
             name += '.txt'
@@ -122,12 +131,7 @@ def split_data(test_txt, test_user, business_csv, test_review, **kwargs):
         'user_id': np.str
         
     }
-# <<<<<<< Updated upstream
     return reviews_list , pd.read_csv(test_user, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_review)
-# =======
-        
-#     return reviews_list , pd.read_csv(test_review, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_grouped_review)
-# >>>>>>> Stashed changes
 
 def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
     # create the result placement folder if does not exist
