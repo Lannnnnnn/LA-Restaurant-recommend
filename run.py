@@ -49,9 +49,11 @@ def main(targets):
         
         reviews_by_city(city_name=data_config['city_name'], review_path=data_config['review_test'], business_path=data_config['business_csv_test'])
         autophrase_reviews(txt_list=[data_config['city_name']])
-        
+
+        data_config['business_csv'] = data_config['business_csv_test']
+
         test_reviews_list, test_review, business_df, test_grouped_review = split_data(**data_config)
-        
+                
         df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
         make_website_table(df, data_config["restaurant_dir"], data_config["subset_dir"])
         
