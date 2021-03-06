@@ -4,7 +4,7 @@
 * This repository contains the files needed in order to view our project website locally.
 * The website represents the 'Visual Presentation' portion of our project, but also serves as our main project output, which is a dynamic website.
 * This website runs using Flask as a development server when working locally.
-* This website can also be found publically at http://vil069.pythonanywhere.com/
+* This website can also be found publicly at http://vil069.pythonanywhere.com/
 
 ## How to run website locally:
 * First, git clone this branch using the command 'git clone --branch website https://github.com/catherinehou99/yelp-recommender-system.git'
