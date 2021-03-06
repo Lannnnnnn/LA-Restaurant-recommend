@@ -33,7 +33,9 @@ def test_function(text, location, foodbtn, vegan):
 
         df = df.assign(goodService=df['phrases']\
         .apply(lambda x: find_substring(x, "service")))\
-        .sort_values(by=['numMentions', 'stars'], ascending=False)    
+        .sort_values(by=['numMentions', 'stars'], ascending=False)
+
+        df=df.head()    
 
         return df.values.tolist()
 
