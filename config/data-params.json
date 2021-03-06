@@ -6,5 +6,8 @@
     "test_review" : "test/testdata/test_review.csv",
     "test_txt": "reference/AutoPhrase_result/Phoenix.txt",
     "restaurant_dir": "data/tmp/Phoenix.csv",
-    "subset_dir": "data/tmp/Phoenix_subset.csv"
+    "subset_dir": "data/tmp/Phoenix_subset.csv",
+    "city_name": "Phoenix",
+    "review_test": "test/testdata/test_review_csv.csv",
+    "business_csv_test": "test/testdata/test_business_csv.csv"
 }

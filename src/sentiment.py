@@ -87,7 +87,7 @@ def process(df):
 def make_sentiment_table(reviews_list, restaurant_dir):
     '''Return a table with sentiment per sentence; positive phrases; negative phrases'''
     print(" -------- Preparing Restaurant Phrases ------")
-    VAL = 0.5
+    VAL = 0.3
     ## change back later
     df = sentiment_score(reviews_list)
     # df = pd.read_csv(restaurant_dir)

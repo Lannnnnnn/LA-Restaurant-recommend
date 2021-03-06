@@ -42,9 +42,10 @@ def reviews_by_city(city_name, review_path, business_path):
         T.StructField("stars", T.FloatType(), True),
         T.StructField("user_id", T.StringType(),  True),                  
     ])
-    
-    business = spark.read.csv("./data/raw/business.csv", header=True, multiLine=True, schema=business_schema, quote="\"", escape="\"")
-    reviews = spark.read.csv("./data/raw/reviews.csv", header=True, multiLine=True, schema=reviews_schema, quote="\"", escape="\"")
+    review_path = "./" + review_path
+    business_path = "./" + business_path
+    business = spark.read.csv("./test/testdata/test_business_csv.csv", header=True, multiLine=True, schema=business_schema, quote="\"", escape="\"")
+    reviews = spark.read.csv("./test/testdata/test_reviews_csv.csv", header=True, multiLine=True, schema=reviews_schema, quote="\"", escape="\"")
     
     df = business.filter(business.city == city_name)\
 .filter(business.categories.contains("Restaurants")|business.categories.contains('Food'))\
@@ -52,12 +53,11 @@ def reviews_by_city(city_name, review_path, business_path):
 .drop(reviews.business_id)
 #.drop(reviews._c01).drop(business._c01)
     
-    res = df.toPandas().drop_duplicates(subset='review_id')
-    
+    res = df.toPandas().drop_duplicates(subset='review_id').reset_index(drop=True)
     res.to_csv('./data/tmp/' + city_name + '_subset.csv')
     
     with open('data/tmp/reviews/' + city_name + '.txt', 'w') as f:
-        content = res['text'].str.cat(sep="\n<REVIEW_DELIMITER>\n")
+        content = res['text'].str.cat(sep="REVIEW_DELIMITER")
         f.write(json.dumps(content))   
 
     print('Subset Created')
@@ -107,14 +107,11 @@ def autophrase_reviews(txt_list, path='data/tmp/reviews'):
     return
     
 
-def split_testdata(test_txt, test_user, business_csv, test_review, **kwargs):
+def split_data(test_txt, test_user, business_csv, test_review, **kwargs):
     '''Return txt back to rows, each row being a review'''
     with open(test_txt, 'r') as f:
-#     with open('../../DSC180A-Project/data/in/yelp_reviews2.txt', 'r') as f:
         reviews_string = f.read()
-        reviews_list = reviews_string.split("\\n<REVIEW_DELIMITER>\\n")
-#         reviews_list = reviews_string.split("\n<<phrase>REVIEW_DELIMITER</phrase>>\n")
-#         reviews_list = reviews_string.split("\n.\n")
+        reviews_list = reviews_string.split("REVIEW_DELIMITER")
 
     reviews_list = pd.Series(reviews_list)[:-1] # last entry is always empty
     dtypes = {
@@ -125,7 +122,12 @@ def split_testdata(test_txt, test_user, business_csv, test_review, **kwargs):
         'user_id': np.str
         
     }
+# <<<<<<< Updated upstream
     return reviews_list , pd.read_csv(test_user, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_review)
+# =======
+        
+#     return reviews_list , pd.read_csv(test_review, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_grouped_review)
+# >>>>>>> Stashed changes
 
 def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
     # create the result placement folder if does not exist
