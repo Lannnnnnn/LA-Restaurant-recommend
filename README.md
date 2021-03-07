@@ -48,7 +48,7 @@ The default running file is run.py and can be simply run through the command lin
 * After running this tag go to the data/eda directory to see the report.html
 
 ```
-$ python3 run.py -- TF-IDF (not implmented yet)
+$ python3 run.py -- tfidf
 ```
 The default running file is run.py and can be simply run through the command line: python3 run.py -- TD-IDF
 * Run restaurant-restaurant based recommendation methods using TF-IDF and cosine similarity score
