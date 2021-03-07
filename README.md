@@ -50,7 +50,7 @@ The default running file is run.py and can be simply run through the command lin
 ```
 $ python3 run.py -- tfidf
 ```
-The default running file is run.py and can be simply run through the command line: python3 run.py -- TD-IDF
+The default running file is run.py and can be simply run through the command line: python3 run.py -- tfidf
 * Run restaurant-restaurant based recommendation methods using TF-IDF and cosine similarity score
 * Generate the TF-IDF results CSV file of two cities, Las Vegas and Phoenix and store in the reference folder
 * Two TF-IDF results CSV are using in the website building as backend database for generating recommendation
