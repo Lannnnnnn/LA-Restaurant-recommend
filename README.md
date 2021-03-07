@@ -51,8 +51,9 @@ The default running file is run.py and can be simply run through the command lin
 $ python3 run.py -- TF-IDF (not implmented yet)
 ```
 The default running file is run.py and can be simply run through the command line: python3 run.py -- TD-IDF
-* Run the user-user based and item-item based recommendation methods using TF-IDF and cosine similarity score
-* Given a user or a restaurant, recommend a list of most related user / restaurant based on cosine similarity score
+* Run restaurant-restaurant based recommendation methods using TF-IDF and cosine similarity score
+* Generate the TF-IDF results CSV file of two cities, Las Vegas and Phoenix and store in the reference folder
+* Two TF-IDF results CSV are using in the website building as backend database for generating recommendation
 
 
 ```
@@ -78,4 +79,4 @@ The default running file is run.py and can be simply run through the command lin
 ### Responsibilities
 * Catherine Hou developed the sentiment tag and eda tag.
 * Vincent Le created the dockerfile and developed the website (not in main branch).
-* Shenghan Liu developed TF-IDF algorithm, user AutoPhrase EDA, data tag. Clean, merge the branches and write the first readme draft.
+* Shenghan Liu developed TF-IDF tag, clean tag, user AutoPhrase EDA, data tag. Clean, merge the branches and write the first readme draft.
