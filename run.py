@@ -51,7 +51,7 @@ def main(targets):
 
         data_config['business_csv'] = data_config['business_csv_test'] # for test data
 
-        test_reviews_list, test_user, business_df, test_review= split_testdata(**data_config)
+        test_reviews_list, test_user, business_df, test_review= split_data(**data_config)
                 
         df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
         make_website_table(df, data_config["restaurant_dir"], data_config["subset_dir"])
