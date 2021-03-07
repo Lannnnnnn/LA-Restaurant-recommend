@@ -84,6 +84,6 @@ The default running file is run.py and can be simply run through the command lin
 * Run all the targets on the test data set we generated 
 
 ### Responsibilities
-* Catherine Hou developed the sentiment tag, eda tag, and data tag.
+* Catherine Hou developed the sentiment/eda/data tag and the food query on the website.
 * Vincent Le created the dockerfile and developed the website (not in main branch).
-* Shenghan Liu developed TF-IDF tag, clean tag, user AutoPhrase EDA, data tag.
+* Shenghan Liu developed TF-IDF/clean/data tag, user AutoPhrase EDA, and the restaurant query on the website.
