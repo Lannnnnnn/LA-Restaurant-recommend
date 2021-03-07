@@ -133,6 +133,35 @@ def split_data(test_txt, test_user, business_csv, test_review, **kwargs):
     }
     return reviews_list , pd.read_csv(test_user, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_review)
 
+def json_to_csv(review_path_in, review_path_out, business_path_in, business_path_out):
+    '''convert the json file into the csv file we needed'''
+    business_data = {"name":[],"business_id":[],"city":[],"categories":[], "address":[], "review_count":[], "hours":[]}
+    with open(business_path_in) as f:
+        for line in f:
+            business = json.loads(line)
+            business_data['name'].append(business['name'])
+            business_data['business_id'].append(business['business_id'])
+            business_data['city'].append(business['city'])
+            business_data['categories'].append(business['categories'])
+            business_data['address'].append(business['address'])
+            business_data['review_count'].append(business['review_count'])
+            business_data['hours'].append(business['hours'])
+    business_df = pd.DataFrame(business_data)
+    business_df.to_csv(business_path_out, index = False)
+
+    review_data = {"review_id":[],"business_id":[],"text":[],"stars":[], "user_id":[]}
+    with open(review_path_in) as fi:
+        for line in fi:
+            review = json.loads(line)
+            review_data['review_id'].append(review['review_id'])
+            review_data['business_id'].append(review['business_id'])
+            review_data['text'].append(review['text'])
+            review_data['stars'].append(review['stars'])
+            review_data['user_id'].append(review['user_id'])
+    review_df = pd.DataFrame(review_data)
+    review_df.to_csv(review_path_out, index = False)
+    return 
+
 def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
     # create the result placement folder if does not exist
     print(' --------Checking the reference folder now ------')
