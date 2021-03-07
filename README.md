@@ -3,7 +3,7 @@
 ## Important Things:
 * This repository contains the files needed in order to view our project website locally.
 * The website represents the 'Visual Presentation' portion of our project, but also serves as our main project output, which is a dynamic website.
-* The data that this website uses for results is in CSV format, having the columns of index, name, business_id, phrases, city, categories, and stars. This type of CSV file is in the same format as the file that results from a successful run of program found in the main branch of this repository.
+* The data that this website uses for results is in CSV format, having the columns of index, name, business_id, phrases, city, categories, and stars. This type of CSV file is in the same format as the file that results from a successful run of the program found in the main branch of this repository.
 * This website runs using Flask as a development server when working locally.
 * This website can also be found publicly at http://vil069.pythonanywhere.com/
 
