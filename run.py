@@ -37,7 +37,7 @@ def main(targets):
         
     if ('tfidf' or 'all') in targets:
         review, business = prepare_review(data_config["subset_dir"], data_config["business_csv"])
-        tf_idf_result(review, business, [data_config['city_name']], amount = 20)
+        tf_idf_result(review, business, ['Las Vegas'], amount = 20)
         
     if ('eda' or 'all') in targets:
         save_eda_data(df, positive_phrases, negative_phrases, eda_config['outdir'], eda_config['out_txt'], review)
@@ -64,7 +64,7 @@ def main(targets):
         
         save_eda_data(df, positive_phrases, negative_phrases, eda_config['out_df'], eda_config['out_txt'], test_review)
         _, business_df = prepare_review(data_config["review_test"], data_config["business_csv_test"])
-        tf_idf_result(test_review, business_df, [data_config['city_name']], amount = 4)
+        tf_idf_result(test_review, business_df, ['Las Vegas', 'Phoenix'], amount = 4)
         # convert_eda(**eda_config)
         return
 
