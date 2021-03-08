@@ -4,10 +4,14 @@
     "business_csv": "data/raw/business.csv",
     "test_user": "test/testdata/test_user.csv",
     "test_review" : "test/testdata/test_review.csv",
-    "test_txt": "reference/AutoPhrase_result/Phoenix.txt",
-    "restaurant_dir": "data/tmp/Phoenix.csv",
-    "subset_dir": "data/tmp/Phoenix_subset.csv",
-    "city_name": "Phoenix",
+    "test_txt": "reference/AutoPhrase_result/Las_Vegas.txt",
+    "restaurant_dir": "data/tmp/Las_Vegas.csv",
+    "subset_dir": "data/tmp/Las_Vegas.csv",
+    "city_name": "Las_Vegas",
     "review_test": "test/testdata/test_reviews_csv.csv",
-    "business_csv_test": "test/testdata/test_business_csv.csv"
+    "business_csv_test": "test/testdata/test_business_csv.csv",
+    "review_test_json": "test/testdata/test_reviews_json.json",
+    "business_csv_test_json": "test/testdata/test_business_json.json",
+    "business_json": "data/raw/business.json",
+    "reviews_json": "data/raw/reviews.json"    
 }

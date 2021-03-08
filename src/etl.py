@@ -50,11 +50,13 @@ def reviews_by_city(city_name, review_path, business_path):
     reviews = spark.read.csv(review_path, header=True, multiLine=True, schema=reviews_schema, quote="\"", escape="\"")
     
     # Filtering process for city; categories must include restaurants/food
-    df = business.filter(business.city == city_name)\
+    df = business.filter(business.city == city_name.replace('_', ' '))\
 .filter(business.categories.contains("Restaurants")|business.categories.contains('Food'))\
 .join(reviews, business.business_id == reviews.business_id, 'inner')\
 .drop(reviews.business_id)
 #.drop(reviews._c01).drop(business._c01)
+
+    city_name = city_name.replace(' ', '_')
     
     # Save city as CSV
     res = df.toPandas().drop_duplicates(subset='review_id').reset_index(drop=True)

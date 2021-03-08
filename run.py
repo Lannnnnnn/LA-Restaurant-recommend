@@ -24,6 +24,9 @@ def main(targets):
     # data ingestion not implmented yet
     if ('data') in targets:
         check_result_folder(**eda_config)
+        
+        json_to_csv(data_config['reviews_json'], data_config['review'], data_config['business_json'], data_config['business_csv'])
+            
         reviews_by_city(city_name=data_config['city_name'], review_path=data_config['review'], business_path=data_config['business_csv'])
         autophrase_reviews(txt_list=[data_config['city_name']])
     
@@ -45,6 +48,8 @@ def main(targets):
         
     if 'test' in targets:
         check_result_folder(**eda_config)
+        
+        json_to_csv(data_config['review_test_json'], data_config['review_test'], data_config['business_csv_test_json'], data_config['business_csv_test'])
         
         reviews_by_city(city_name=data_config['city_name'], review_path=data_config['review_test'], business_path=data_config['business_csv_test'])
         autophrase_reviews(txt_list=[data_config['city_name']])
