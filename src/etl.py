@@ -118,7 +118,7 @@ def autophrase_reviews(txt_list, path='data/tmp/reviews'):
     return
     
 
-def split_data(test_txt, test_user, business_csv, test_review, **kwargs):
+def split_data(test_txt, test_user, business_csv, review_test, **kwargs):
     '''Return txt back to rows, each row being a review'''
     with open(test_txt, 'r') as f:
         reviews_string = f.read()
@@ -133,10 +133,11 @@ def split_data(test_txt, test_user, business_csv, test_review, **kwargs):
         'user_id': np.str
         
     }
-    return reviews_list , pd.read_csv(test_user, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(test_review)
+    return reviews_list , pd.read_csv(test_user, dtype = dtypes), pd.read_csv(business_csv), pd.read_csv(review_test)
 
 def json_to_csv(review_path_in, review_path_out, business_path_in, business_path_out):
     '''convert the json file into the csv file we needed'''
+    print("----- Start Converting Business Json file into CSV file -----")
     business_data = {"name":[],"business_id":[],"city":[],"categories":[], "address":[], "review_count":[], "hours":[]}
     with open(business_path_in) as f:
         for line in f:
@@ -150,7 +151,9 @@ def json_to_csv(review_path_in, review_path_out, business_path_in, business_path
             business_data['hours'].append(business['hours'])
     business_df = pd.DataFrame(business_data)
     business_df.to_csv(business_path_out, index = False)
+    print("----- Finish Converting Business Json file into CSV file -----")
 
+    print("----- Start Converting Review Json file into CSV file -----")
     review_data = {"review_id":[],"business_id":[],"text":[],"stars":[], "user_id":[]}
     with open(review_path_in) as fi:
         for line in fi:
@@ -162,6 +165,7 @@ def json_to_csv(review_path_in, review_path_out, business_path_in, business_path
             review_data['user_id'].append(review['user_id'])
     review_df = pd.DataFrame(review_data)
     review_df.to_csv(review_path_out, index = False)
+    print("----- Finish Converting Review Json file into CSV file -----")
     return 
 
 def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
@@ -181,6 +185,9 @@ def check_result_folder(out_df, out_img, out_txt, out_autophrase, **kwargs):
         os.system(command)
     if os.path.isdir('data/tmp') is False:
         command = 'mkdir -p ' + 'data/tmp'
+        os.system(command)
+    if os.path.isdir('data/raw') is False:
+        command = 'mkdir -p ' + 'data/raw'
         os.system(command)
     if os.path.isdir('data/tmp/reviews') is False:
         command = 'mkdir -p ' + 'data/tmp/reviews'
