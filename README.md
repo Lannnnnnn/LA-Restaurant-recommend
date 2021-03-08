@@ -18,7 +18,7 @@ Visit our `website` branch to try some queries on a preprocessed Las Vegas / Pho
 
 ## How to Use this Repository:
 1. Run the test target in the `main` branch if you would like to test the targets.
-2. In `config/data-params` you can choose which city you would like to subset.
+2. In `config/data-params` you can choose which city you would like to subset. For test target, the city can be Las Vegas or Phoenix.
 3. Once you successfully run the targets, the generated files will be saved to `data/tmp`. These files need to be used in the `data` folder of the`website` branch.
 4. If you would like to run the website on Flask, head over to the website branch!
 
