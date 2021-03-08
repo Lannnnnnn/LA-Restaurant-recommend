@@ -116,9 +116,12 @@ def make_website_table(df, restaurant_dir, subset_dir):
         i += 1
     df = pd.concat(chunk_list)
     print("--- %s seconds ---" % (time.time() - start_time))
+
     a = df.groupby('index')['phrases'].sum().reset_index()
-    pdb.set_trace()
-    b = a.merge(lv.rename({'Unnamed: 0': 'index'}, axis=1), on='index')
+            
+#     b = a.merge(lv.rename({'Unnamed: 0': 'index'}, axis=1, on='index')
+    b = lv.rename({'Unnamed: 0': 'index'}, axis=1).merge(a, on='index')
+                        
     c = b.groupby(['name', 'business_id']).phrases.sum()\
     .apply(lambda x: pd.Series(x).value_counts().to_dict()).reset_index()
     d = lv[['business_id', 'city', 'categories', 'stars']]\

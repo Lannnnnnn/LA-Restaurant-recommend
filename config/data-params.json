@@ -6,7 +6,7 @@
     "test_review" : "test/testdata/test_review.csv",
     "test_txt": "reference/AutoPhrase_result/Las_Vegas.txt",
     "restaurant_dir": "data/tmp/Las_Vegas.csv",
-    "subset_dir": "data/tmp/Las_Vegas.csv",
+    "subset_dir": "data/tmp/Las_Vegas_subset.csv",
     "city_name": "Las_Vegas",
     "review_test": "test/testdata/test_reviews_csv.csv",
     "business_csv_test": "test/testdata/test_business_csv.csv",
