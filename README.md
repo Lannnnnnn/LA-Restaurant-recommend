@@ -31,7 +31,7 @@ The default running file is run.py and can be simply run through the command lin
 This will run all the targets below (data, sentiment, eda, tfidf)
 
 For each of the target:
-* data: performs the data ingestion pipeline such as downloading the necessary data, read the necessary configuration
+* data: prepares necessary folders, reads in Yelp json files, and filters the dataset to contain rows relevant to the specified city.
 * sentiment: performs sentiment analysis on the reviews. It will take in the reviews dataframe and output the positive/negative sentences counts.
 * eda: performs the eda analysis of the dataset and autophrase result.
 * test: runs the above targets on a test dataset which runs around 3mins.
