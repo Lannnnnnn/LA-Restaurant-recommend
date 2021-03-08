@@ -3,7 +3,6 @@
     "review": "data/raw/reviews.csv",
     "business_csv": "data/raw/business.csv",
     "test_user": "test/testdata/test_user.csv",
-    "test_review" : "test/testdata/test_review.csv",
     "test_txt": "reference/AutoPhrase_result/Las_Vegas.txt",
     "restaurant_dir": "data/tmp/Las_Vegas.csv",
     "subset_dir": "data/tmp/Las_Vegas_subset.csv",

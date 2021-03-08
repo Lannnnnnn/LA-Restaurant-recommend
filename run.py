@@ -49,19 +49,21 @@ def main(targets):
     if 'test' in targets:
         check_result_folder(**eda_config)
         
-        json_to_csv(data_config['review_test_json'], data_config['review_test'], data_config['business_csv_test_json'], data_config['business_csv_test'])
+        json_to_csv(data_config['review_test_json'], data_config['review_test'],
+         data_config['business_csv_test_json'], data_config['business_csv_test'])
         
         reviews_by_city(city_name=data_config['city_name'], review_path=data_config['review_test'], business_path=data_config['business_csv_test'])
         autophrase_reviews(txt_list=[data_config['city_name']])
 
         data_config['business_csv'] = data_config['business_csv_test'] # for test data
 
-        test_reviews_list, test_user, business_df, test_review= split_data(**data_config)
+        test_reviews_list, test_user, _, test_review= split_data(**data_config)
                 
         df, positive_phrases, negative_phrases = make_sentiment_table(test_reviews_list, data_config['restaurant_dir'])
         make_website_table(df, data_config["restaurant_dir"], data_config["subset_dir"])
         
         save_eda_data(df, positive_phrases, negative_phrases, eda_config['out_df'], eda_config['out_txt'], test_review)
+        _, business_df = prepare_review(data_config["review_test"], data_config["business_csv_test"])
         tf_idf_result(test_review, business_df, [data_config['city_name']], amount = 4)
         # convert_eda(**eda_config)
         return

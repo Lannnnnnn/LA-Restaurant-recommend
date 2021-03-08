@@ -41,7 +41,7 @@ def preprocess_group_restaurant_review(review_df, business_df):
 
 def generate_rest_recommend(grouped_df, n):
     # initialize and train the tf-idf vectorizer
-    tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english')
+    tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0.1, stop_words='english')
     tfidf_matrix = tf.fit_transform(grouped_df.text.apply(lambda x: x.lower()))
     # calculate the cosine similarity of tf-idf result
     cosine_sim = cosine_similarity(tfidf_matrix)

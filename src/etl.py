@@ -207,4 +207,8 @@ def clean_repo():
         shutil.rmtree('tmp')
     if os.path.isdir('AutoPhrase/data/txt') is True:
         shutil.rmtree('AutoPhrase/data/txt')
+    if os.path.isdir('data/raw') is True:
+        shutil.rmtree('data/raw')
+    if os.path.isdir('data/tmp') is True:
+        shutil.rmtree('data/tmp')
     return
