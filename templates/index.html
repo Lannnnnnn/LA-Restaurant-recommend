@@ -56,7 +56,7 @@
                 Yelp Recommender System
             </section>
             <section id="query">
-                <form id="query1" method="POST">
+                <form id="query1" method="POST" onkeydown="return event.key != 'Enter';">
                     <input type="text" id="querybox" name="querybox" placeholder="What are you looking for?">
                     <button type="button" id="submit"><i class="fa fa-search"></i></button>
                     <br>
