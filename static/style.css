@@ -11,7 +11,7 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url('food2.jpg');
+    background-image: url('food2.jpg'); /* Image credit to Steyn Viljoen, taken from pexels.com*/
     background-repeat: no-repeat;
     background-size: 100% 750px;
     background-attachment: fixed;
